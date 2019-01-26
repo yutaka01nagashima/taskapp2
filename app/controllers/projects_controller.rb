@@ -37,9 +37,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(
-      :name,
-      tasks_attributes: [:name] # 追記
-    )
+    params.require(:project).permit(:name, tasks_attributes: [:id, :name, :_destroy])
   end
 end
