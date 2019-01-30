@@ -1,28 +1,15 @@
-= form_with model: project, local: true do |f|
+= simple_nested_form_for project do |f|
   .form-group
     = f.label :name
     =f.text_field :name, class: 'form-control', id: 'project_name'
-  = f.submit nil, class: 'btn btn-primary'
-
-  = simple_nested_form_for(@project) do |f|
-  - if @project.errors.any?
-    #error_explanation
-       h2
-        = pluralize(@project.errors.count, "error")
-        prohibited this project from being saved:
-       ul
-        - @project.errors.full_messages.each do |message|
-           li= message
   .js-project
     .field
-      = f.input :name
+      h2 タスク
+      .tasks__form-container
+        = f.fields_for :tasks do |tf|
+          = tf.input :name
+      br
     .field
-       h2 タスク
-      = f.simple_fields_for :tasks do |task|
-        = render 'task_fields', f: task
-         br
-         br
-    .field
-      = link_to_add_association 'タスク追加', f, :tasks
+      = f.link_to_add '追加', :tasks, data: { target: '.tasks__form-container' }
   .actions
-    = f.submit '登録'
+    = f.submit '登録', class: 'btn btn-primary'

@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-
+    @project.tasks.build
   end
 
   def edit
