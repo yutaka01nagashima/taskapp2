@@ -1,18 +1,4 @@
 h1  プロジェクトの新規登録
 nav.justify-content-end
   = link_to '一覧', tasks_path, class: 'nav-link'
-= render partial: 'form', locals: { project: @project}
-
-nested_form_for @project do |f| 
-
-  f.label :name 
-  f.text_field :name 
-  
-  f.fields_for :tasks do |mf| 
-    mf.label :name 
-    mf.text_field :name 
-    mf.link_to_remove '削除！' 
-  end 
-f.link_to_add '追加！' :tasks 
-f.submit 
-end 
+= render partial: 'form', locals: { project: @project} 
