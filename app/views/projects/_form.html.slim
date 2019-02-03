@@ -6,10 +6,10 @@
   .js-project
     .field
       h2 タスク
-        .tasks__form-container
-          = f.fields_for :tasks do |tf|
+      .tasks__form-container
+        = f.fields_for :tasks do |tf|
           = tf.input :name
-br
-    .field
-      = f.link_to_add '追加', :tasks, data: { target: '.tasks__form-container' }
-      = f.submit '登録', class: 'btn btn-primary' 
+  br
+  .field
+    = f.link_to_add '追加', :tasks, data: { target: '.tasks__form-container' }
+    = f.submit '登録', class: 'btn btn-primary'
